@@ -1,19 +1,54 @@
 package org.example;
-
+import java.util.Objects;
+import java.util.Scanner;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
         // Press Opt+Enter with your caret at the highlighted text to see how
         // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.print("Hello and welcome!\n" +
+                "Press 1 for addition\n" +
+                "Press 2 for subtraction\n" +
+                "Press 3 for multiplication\n" +
+                "Press 4 for division\n");
+        Scanner scanner = new Scanner(System.in);
+        int op = scanner.nextInt();
 
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        System.out.print("Enter the first number:\n");
+        int a = scanner.nextInt();
 
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+        System.out.print("Enter the second number:\n");
+        int b = scanner.nextInt();
+
+        int out = 0;
+        if(op == 1){
+            out = addition(a,b);
         }
+        if(op == 2){
+            out = subtraction(a,b);
+        }
+        if(op == 3){
+            out = multiplication(a,b);
+        }
+        if(op == 4){
+            out = division(a,b);
+        }
+
+        System.out.print(out);
+
+    }
+
+    public static int addition(int a, int b){
+        return a+b;
+    }
+    public static int subtraction(int a, int b){
+        return a-b;
+    }
+    public static int multiplication(int a, int b){
+        return a*b;
+    }
+    public static int division(int a, int b){
+        return a/b;
     }
 }
