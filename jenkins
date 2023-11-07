@@ -1,0 +1,58 @@
+pipeline{
+    environment{
+        registry = 'dockervatsal/calculator'
+        DOCKERHUB_CRED = credentials('DockerHubCred')
+        registryCredential = 'DockerHubCred'
+        docker_image = ''
+    }
+    agent any
+    tools {
+        maven 'mvn'
+        ansible 'ansible'
+    }
+    stages{
+        stage('Stage 1: Git Clone'){
+            steps{
+                git branch: 'main',
+                        url:'https://github.com/vatsal-dhama/calculator.git'
+            }
+        }
+        stage('Stage 2: Maven Build'){
+            steps{
+                sh 'mvn clean install'
+            }
+        }
+        stage('Stage 3: Build Docker Image'){
+            steps{
+                script{
+                    docker_image = docker.build "dockervatsal/calculator:latest"
+                }
+            }
+        }
+        stage('Stage 4: Push docker image to hub'){
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'DockerHubCred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh 'docker login -u ' +USERNAME +' -p ' +PASSWORD
+                    }
+
+                    sh 'docker push ' +registry +':latest'
+                }
+            }
+        }
+        stage('Stage 5: Free local storage'){
+            steps{
+                script{
+                    sh 'docker rmi $registry:latest'
+                }
+            }
+        }
+        stage('Stage 6: Ansible Deployment'){
+            steps{
+                script{
+                    sh 'ansible-playbook Deployment/playbook.yml -i Deployment/inventory'
+                }
+            }
+        }
+    }
+}
