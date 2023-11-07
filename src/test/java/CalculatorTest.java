@@ -14,41 +14,41 @@ public class CalculatorTest {
 
     @Test
     public void test_add_pos(){
-        int a = 1;
-        int b = 2;
-        int out = 3;
-        Assert.assertEquals(out,calculator.addition(a,b));
+        double a = 1;
+        double b = 2;
+        double out = 3;
+        Assert.assertEquals(out,calculator.addition(a,b),0.01);
     }
 
     @Test
     public void test_add_posneg(){
-        int a = 2;
-        int b = -3;
-        int out = -1;
-        Assert.assertEquals(out,calculator.addition(a,b));
+        double a = 2;
+        double b = -3;
+        double out = -1;
+        Assert.assertEquals(out,calculator.addition(a,b),0.01);
     }
 
     @Test
     public void test_subs(){
-        int a = -5;
-        int b = -19;
-        int out = 14;
-        Assert.assertEquals(out,calculator.subtraction(a,b));
+        double a = -5;
+        double b = -19;
+        double out = 14;
+        Assert.assertEquals(out,calculator.subtraction(a,b),0.01);
     }
 
     @Test
     public void test_mult() {
-        int a = 4;
-        int b = -3;
-        int out = -12;
-        Assert.assertEquals(out, calculator.multiplication(a, b));
+        double a = 4;
+        double b = -3;
+        double out = -12;
+        Assert.assertEquals(out, calculator.multiplication(a, b),0.01);
     }
 
     @Test
     public void test_divide(){
-        int a = 3;
-        int b = 2;
-        int out = 1;
-        Assert.assertEquals(out,calculator.division(a,b));
+        double a = 3;
+        double b = 2;
+        double out = 1.5;
+        Assert.assertEquals(out,calculator.division(a,b),0.01);
     }
 }

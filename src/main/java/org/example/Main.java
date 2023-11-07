@@ -16,12 +16,12 @@ public class Main {
         int op = scanner.nextInt();
 
         System.out.print("Enter the first number:\n");
-        float a = scanner.nextFloat();
+        double a = scanner.nextFloat();
 
         System.out.print("Enter the second number:\n");
-        float b = scanner.nextFloat();
+        double b = scanner.nextFloat();
 
-        float out = 0;
+        double out = 0;
         if(op == 1){
             out = addition(a,b);
         }
@@ -39,16 +39,16 @@ public class Main {
 
     }
 
-    public static float addition(float a, float b){
+    public static double addition(double a, double b){
         return a+b;
     }
-    public static float subtraction(float a, float b){
+    public static double subtraction(double a, double b){
         return a-b;
     }
-    public static float multiplication(float a, float b){
+    public static double multiplication(double a, double b){
         return a*b;
     }
-    public static float division(float a, float b){
+    public static double division(double a, double b){
         return a/b;
     }
 }
