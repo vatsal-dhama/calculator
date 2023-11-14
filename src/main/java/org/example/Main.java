@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         // Press Opt+Enter with your caret at the highlighted text to see how
         // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome! \n" +
+        System.out.print("Hello and welcome!\n" +
                 "Press 1 for addition\n" +
                 "Press 2 for subtraction\n" +
                 "Press 3 for multiplication\n" +
